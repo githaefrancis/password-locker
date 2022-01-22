@@ -58,5 +58,8 @@ class TestUser(unittest.TestCase):
     logged_in_user=User.user_login("test24","7899")
     self.assertEqual(logged_in_user.username,"test24")
 
+  # def test_add_account_credential(self):
+
+
 if __name__=='__main__':
   unittest.main()
