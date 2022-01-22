@@ -15,6 +15,8 @@ class Credential:
     '''
 
     self.platform_name=platform_name
+    self.username=username
     self.password=password
+
 
 
