@@ -15,7 +15,7 @@ class TestUser(unittest.TestCase):
     Set up method to run before each test case
     '''
 
-    self.new_user=User("Francis","Githae","francis.githae@student.moringaschool.com") #create user object
+    self.new_user=User("Francis","Githae","francis.githae@student.moringaschool.com","francis","1234") #create user object
 
   def tearDown(self):
     '''
@@ -32,6 +32,8 @@ class TestUser(unittest.TestCase):
     self.assertEqual(self.new_user.first_name,"Francis")
     self.assertEqual(self.new_user.last_name,"Githae")
     self.assertEqual(self.new_user.email,"francis.githae@student.moringaschool.com")
+    self.assertEqual(self.new_user.username,"francis")
+    self.assertEqual(self.new_user.password,"1234")
     self.assertEqual(self.new_user.credentials_list,[])
 
 
@@ -42,6 +44,19 @@ class TestUser(unittest.TestCase):
     
     self.new_user.save_user() #save user to the user list
     self.assertEqual(len(User.user_list),1)
+
+  def test_user_login(self):
+    '''
+    test_user_login test case to test if a user is authenticated
+    '''
+
+    self.new_user.save_user()
+
+    test_user=User("Test","Test","test@gmail.com","test24","7899")
+    test_user.save_user()
+
+    logged_in_user=User.user_login("test24","7899")
+    self.assertEqual(logged_in_user.username,"test24")
 
 if __name__=='__main__':
   unittest.main()
