@@ -35,5 +35,14 @@ class Test_credential(unittest.TestCase):
     self.new_credential.save_credential(self.new_user)
     self.new_credential.delete_credential(self.new_user)   
     self.assertEqual(len(User.user_list[0].credentials_list),0)
+
+  def test_display_credentials(self):
+    '''
+    test_display_credentials to test displaying all credentials saved under a user
+
+    '''
+    self.new_user.save_user()
+    self.new_credential.save_credential(self.new_user)
+    self.assertEqual(Credential.display_credentials(self.new_user),self.new_user.credentials_list)
 if __name__=='__main__':
   unittest.main()
