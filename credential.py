@@ -1,4 +1,6 @@
 import random
+
+import pyperclip
 class Credential:
   """
   Class that generates new instances new instances of credential
@@ -66,3 +68,11 @@ class Credential:
         return credential
 
     return None
+
+  @classmethod
+  def copy_credential(cls,user,platform):
+    '''
+    copy_credential method to copy selected credential
+    '''
+    credential_found=Credential.find_credential_by_platform_name(user,platform)
+    pyperclip.copy(f"{credential_found.username} {credential_found.password}")

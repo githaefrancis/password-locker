@@ -1,6 +1,7 @@
 import unittest
 from credential import Credential
 from user import User
+import pyperclip
 
 class Test_credential(unittest.TestCase):
   """
@@ -60,5 +61,19 @@ class Test_credential(unittest.TestCase):
     self.new_credential.save_credential(self.new_user)
     found_credential=Credential.find_credential_by_platform_name(self.new_user,"twitter")
     self.assertEqual(found_credential.platform_name,"twitter")
+
+  def test_copy_credential(self):
+    '''
+    Test to confirm we are able to copy a credential to the clipboard
+    '''
+
+    self.new_user.save_user()
+    self.new_credential.save_credential(self.new_user)
+    Credential.copy_credential(self.new_user,"twitter")
+
+    self.assertEqual(f"{self.new_credential.username} {self.new_credential.password}",pyperclip.paste())
+
+  
+
 if __name__=='__main__':
   unittest.main()
