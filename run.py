@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from credential import Credential
 from user import User
 
 active_user = None  # No user logged in by default
@@ -30,6 +31,8 @@ def user_login(username, password):
     # else:
     #     print(f"Unable to login, Please provide correct credentials")
 
+def display_credentials(user):
+  return Credential.display_credentials(user)
 
 def main():
     print('Welcome to Passord Locker?  \n')
@@ -81,6 +84,14 @@ def main():
     while active_user:
         print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential")
         option=input().lower()
+
+        if option=='dc':
+          credentials=display_credentials(active_user)
+          print(credentials)
+
+        elif option=='cc':
+          
+
 
 if(__name__ == '__main__'):
     main()
