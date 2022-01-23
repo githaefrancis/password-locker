@@ -62,5 +62,4 @@ class Credential:
       if credential.platform_name==platform:
         return credential
 
-      else:
-         return None
+    return None

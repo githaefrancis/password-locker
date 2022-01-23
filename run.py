@@ -149,6 +149,7 @@ def main():
           credential_to_remove=find_credential_by_platform_name(active_user,remove_option)
           if(credential_to_remove):
             credential_to_remove.delete_credential(active_user)
+            print(f"Credential for {remove_option} deleted!")
 
           else:
             print("credential not found")
