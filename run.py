@@ -72,12 +72,10 @@ def copy_credential(user,platform):
 
 def main():
     print('Welcome to Passord Locker?  \n')
-
-    print(f"What action would you like to take? ")
     print('\n')
 
     while True:
-        print("Use these short codes: new - create your account, login - login to your account")
+        print("Use these short codes to choose a task: new - create your account, login - login to your account, ex - exit Password Locker")
         short_code = input().lower()
 
         if short_code == 'new':
@@ -115,10 +113,15 @@ def main():
                 break
             else:
                 print(f"Unable to login, Please provide correct credentials")
-    print('Out of the loop')
+        elif short_code=='ex':
+          print("Good bye")
+          exit(0)
+
+        else:
+          print("Please enter a valid option")
     
     while active_user:
-        print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential, rc - remove credential, cp - copy credential")
+        print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential, rc - remove credential, cp - copy credential, ex - logout")
         option=input().lower()
 
         if option=='dc':
@@ -170,6 +173,14 @@ def main():
           clipboard_credential=copy_credential(active_user,platform)
 
           print(f"Your credential for {platform} has been copied to the clipboard")
+        
+        elif option=="ex":
+          print(f"Good bye {active_user.first_name}")
+          active_user=None
+          main()
+        
+        else:
+          print("Please input a valid option")
 
 if(__name__ == '__main__'):
     main()
