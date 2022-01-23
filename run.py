@@ -71,16 +71,19 @@ def copy_credential(user,platform):
   Credential.copy_credential(user,platform)
 
 def main():
-    print('Welcome to Passord Locker?  \n')
-    print('\n')
+    print('-'*100)
+    print(' '*30 + ' Welcome to Password Locker.  \n')
+    print('-'*100)
+  
 
     while True:
+        
         print("Use these short codes to choose a task: new - create your account, login - login to your account, ex - exit Password Locker")
         short_code = input().lower()
 
         if short_code == 'new':
             print("Create Account")
-            print("-"*10)
+            print("-"*20)
             print("First name ...")
             first_name = input()
             print("Last Name ...")
@@ -98,8 +101,10 @@ def main():
                       email, username, password))
             print('\n')
             print(f"Account created, Your username is {username}")
+            print('-'*50)
 
         elif short_code == 'login':
+            print("-"*20)
             print("Enter your username")
             username = input()
 
@@ -109,6 +114,7 @@ def main():
             active_user=user_login(username, password)
 
             if(active_user):
+                print('-'*20)
                 print(f"Welcome {active_user.first_name}")
                 break
             else:
@@ -121,10 +127,13 @@ def main():
           print("Please enter a valid option")
     
     while active_user:
+        print('-'*100)
         print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential, rc - remove credential, cp - copy credential, ex - logout")
         option=input().lower()
 
         if option=='dc':
+          print("Display credentials")
+          print("-"*20)
           credentials=display_credentials(active_user)
           if(credentials):
             for credential in credentials:
@@ -133,6 +142,8 @@ def main():
             print("No credentials saved")
 
         elif option=='cc':
+          print("Create Credential")
+          print("-"*20)
           print("Which platform does the account belong eg Facebook")
           platform_name=input()
           print("Enter your username")
@@ -156,6 +167,8 @@ def main():
           print(new_credential)
 
         elif option=="rc":
+          print("Delete Credential")
+          print("-"*20)
           print("Which platform would you like to remove? eg Facebook")
           remove_option=input()
           credential_to_remove=find_credential_by_platform_name(active_user,remove_option)
@@ -167,6 +180,8 @@ def main():
             print("credential not found")
 
         elif option=="cp":
+          print("Copy credential")
+          print("-"*20)
           print("Enter the platform name for which you would like to copy the credential: ")
           platform=input()
 
@@ -175,6 +190,8 @@ def main():
           print(f"Your credential for {platform} has been copied to the clipboard")
         
         elif option=="ex":
+          print("Logout")
+          print("-"*20)
           print(f"Good bye {active_user.first_name}")
           active_user=None
           main()
