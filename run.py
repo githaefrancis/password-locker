@@ -39,6 +39,12 @@ def create_credential(platform_name,username,password):
   function to create a login credential
   '''
   return Credential(platform_name,username,password)
+
+def save_credential(user):
+  '''
+  function to save login credential
+  '''
+  Credential.save_credential(user)
   
 
 def main():
@@ -94,7 +100,11 @@ def main():
 
         if option=='dc':
           credentials=display_credentials(active_user)
-          print(credentials)
+          if(credentials):
+            for credential in credentials:
+              print(credential.__str__())
+          else:
+            print("No credentials saved")
 
         elif option=='cc':
           print("Which platform does the account belong eg Facebook")
@@ -105,6 +115,7 @@ def main():
           password=input()
 
           new_credential=create_credential(platform_name,username,password)
+          new_credential.save_credential(active_user)
           print(new_credential)
 
 
