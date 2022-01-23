@@ -46,3 +46,21 @@ class Credential:
       selected_character_list.append(random.choice(characters))
 
     return "".join(selected_character_list)
+
+  @classmethod
+  def find_credential_by_platform_name(cls,user,platform):
+    '''
+    find_credential_by_platform_name method to find a credential saved by a user
+
+    Args: 
+        user: user from which to search the credential
+    Returns:
+        The credential that matches the platform name
+    '''
+
+    for credential in user.credentials_list:
+      if credential.platform_name==platform:
+        return credential
+
+      else:
+         return None

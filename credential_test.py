@@ -51,5 +51,14 @@ class Test_credential(unittest.TestCase):
     '''
     new_password=Credential.generate_password()
     self.assertEqual(len(new_password),8)
+
+  def test_find_credential_by_platform_name(self):
+    '''
+    test_find_credential_by_account_name to test if a credential is seached by account name
+    '''
+    self.new_user.save_user()
+    self.new_credential.save_credential(self.new_user)
+    found_credential=Credential.find_credential_by_platform_name(self.new_user,"twitter")
+    self.assertEqual(found_credential.platform_name,"twitter")
 if __name__=='__main__':
   unittest.main()
