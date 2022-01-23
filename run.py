@@ -46,11 +46,11 @@ def save_credential(user):
   '''
   Credential.save_credential(user)
 
-def generate_password():
+def generate_password(length):
   '''
   function to generate password
   ''' 
-  return Credential.generate_password()
+  return Credential.generate_password(length)
 def find_credential_by_platform_name(user,platform_name):
   '''
   function to search for a credential by platform name
@@ -134,8 +134,9 @@ def main():
             password=input()
 
           elif password_option=="2":
-            print(generate_password)
-            password=generate_password()
+            print("Enter the length of the password you would like: ")
+            length=int(input())
+            password=generate_password(length)
             print(f"Your password is {password}")
           
 

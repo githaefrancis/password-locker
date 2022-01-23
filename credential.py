@@ -35,14 +35,17 @@ class Credential:
 
 
   @classmethod
-  def generate_password(cls):
+  def generate_password(cls,length):
     '''
     generate_password method that generates a password for an account
+
+    Args:
+        length: Length of the password
     '''
     characters="abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ+-!#$?>"
     selected_character_list=[]
 
-    for i in range(8):
+    for i in range(length):
       selected_character_list.append(random.choice(characters))
 
     return "".join(selected_character_list)
