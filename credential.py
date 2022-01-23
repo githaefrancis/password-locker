@@ -18,6 +18,9 @@ class Credential:
     self.username=username
     self.password=password
 
+  def __str__(self):
+    return 'platform_name:  ' + str(self.platform_name) +' username: ' + str(self.username) + ' password: ' + str(self.password)
+
   def save_credential(self,user):
     user.credentials_list.append(self)
 

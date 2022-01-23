@@ -34,6 +34,13 @@ def user_login(username, password):
 def display_credentials(user):
   return Credential.display_credentials(user)
 
+def create_credential(platform_name,username,password):
+  '''
+  function to create a login credential
+  '''
+  return Credential(platform_name,username,password)
+  
+
 def main():
     print('Welcome to Passord Locker?  \n')
 
@@ -90,7 +97,15 @@ def main():
           print(credentials)
 
         elif option=='cc':
-          
+          print("Which platform does the account belong eg Facebook")
+          platform_name=input()
+          print("Enter your username")
+          username=input()
+          print("Enter your password")
+          password=input()
+
+          new_credential=create_credential(platform_name,username,password)
+          print(new_credential)
 
 
 if(__name__ == '__main__'):
