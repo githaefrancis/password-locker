@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+from sys import platform
 from credential import Credential
 from user import User
 
@@ -62,6 +63,13 @@ def delete_credential(user):
   function to delete credential
   '''
   Credential.delete_credential(user)
+
+def copy_credential(user,platform):
+  '''
+  function to copy credential to the clipboard
+  '''
+  Credential.copy_credential(user,platform)
+
 def main():
     print('Welcome to Passord Locker?  \n')
 
@@ -110,7 +118,7 @@ def main():
     print('Out of the loop')
     
     while active_user:
-        print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential, rc - remove credential")
+        print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential, rc - remove credential, cp - copy credential")
         option=input().lower()
 
         if option=='dc':
@@ -154,6 +162,14 @@ def main():
 
           else:
             print("credential not found")
+
+        elif option=="cp":
+          print("Enter the platform name for which you would like to copy the credential: ")
+          platform=input()
+
+          clipboard_credential=copy_credential(active_user,platform)
+
+          print(f"Your credential for {platform} has been copied to the clipboard")
 
 if(__name__ == '__main__'):
     main()
