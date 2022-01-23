@@ -1,3 +1,4 @@
+import random
 class Credential:
   """
   Class that generates new instances new instances of credential
@@ -31,3 +32,17 @@ class Credential:
   @classmethod
   def display_credentials(cls,user):
     return user.credentials_list
+
+
+  @classmethod
+  def generate_password(cls):
+    '''
+    generate_password method that generates a password for an account
+    '''
+    characters="abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ+-!#$?>"
+    selected_character_list=[]
+
+    for i in range(8):
+      selected_character_list.append(random.choice(characters))
+
+    return "".join(selected_character_list)
