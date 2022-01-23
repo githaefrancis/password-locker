@@ -51,7 +51,17 @@ def generate_password():
   function to generate password
   ''' 
   return Credential.generate_password()
+def find_credential_by_platform_name(user,platform_name):
+  '''
+  function to search for a credential by platform name
+  '''
+  return Credential.find_credential_by_platform_name(user,platform_name)
 
+def delete_credential(user):
+  '''
+  function to delete credential
+  '''
+  Credential.delete_credential(user)
 def main():
     print('Welcome to Passord Locker?  \n')
 
@@ -100,7 +110,7 @@ def main():
     print('Out of the loop')
     
     while active_user:
-        print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential")
+        print("What would you like to do? Use these short codes: dc - display credentials, cc - create credential, rc - remove credential")
         option=input().lower()
 
         if option=='dc':
@@ -133,6 +143,15 @@ def main():
           new_credential.save_credential(active_user)
           print(new_credential)
 
+        elif option=="rc":
+          print("Which platform would you like to remove? eg Facebook")
+          remove_option=input()
+          credential_to_remove=find_credential_by_platform_name(active_user,remove_option)
+          if(credential_to_remove):
+            credential_to_remove.delete_credential(active_user)
+
+          else:
+            print("credential not found")
 
 if(__name__ == '__main__'):
     main()
