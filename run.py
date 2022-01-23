@@ -45,7 +45,12 @@ def save_credential(user):
   function to save login credential
   '''
   Credential.save_credential(user)
-  
+
+def generate_password():
+  '''
+  function to generate password
+  ''' 
+  return Credential.generate_password()
 
 def main():
     print('Welcome to Passord Locker?  \n')
@@ -102,7 +107,7 @@ def main():
           credentials=display_credentials(active_user)
           if(credentials):
             for credential in credentials:
-              print(credential.__str__())
+              print(f"{credentials.index(credential) + 1} : {credential.__str__()}")
           else:
             print("No credentials saved")
 
@@ -111,8 +116,18 @@ def main():
           platform_name=input()
           print("Enter your username")
           username=input()
-          print("Enter your password")
-          password=input()
+          print("Choose 1 to enter your password. Choose 2 to generate a password")
+          password_option=input()
+
+          if password_option=="1":
+            print("Enter your password")
+            password=input()
+
+          elif password_option=="2":
+            print(generate_password)
+            password=generate_password()
+            print(f"Your password is {password}")
+          
 
           new_credential=create_credential(platform_name,username,password)
           new_credential.save_credential(active_user)
