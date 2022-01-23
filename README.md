@@ -12,6 +12,11 @@ Francis Githae
 
 Python 3.8.10
 
+## Dependencies
+
+-Pyper -Copying text
+-xclip - Copy and paste mechanism
+
 ## Setup and Installation
 
 1. Clone the repository
@@ -50,7 +55,6 @@ chmod +x run.py
 ## Contact
 Email: mureithigithae@gmail.com
 
-## License
 ## License
 
 This project is under the MIT License [click here for more information](LICENSE)
