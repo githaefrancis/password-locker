@@ -51,3 +51,8 @@ chmod +x run.py
 Email: mureithigithae@gmail.com
 
 ## License
+## License
+
+This project is under the MIT License [click here for more information](LICENSE)
+
+&copy; 2022 Francis Githae
