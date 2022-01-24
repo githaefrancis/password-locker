@@ -25,14 +25,31 @@ class Credential:
     return 'Account:  ' + str(self.platform_name) +' , username: ' + str(self.username) + ' , password: ' + str(self.password)
 
   def save_credential(self,user):
+    '''
+    Method to save a credential under a user
+
+    Args:
+        user: The user under which the credential should be saved.
+    '''
     user.credentials_list.append(self)
 
 
   def delete_credential(self,user):
+    '''
+    delete_credential method to delete a credential from a user's account
+
+    Args:
+        user: The user under which the credential should be saved.
+
+    '''
+
     user.credentials_list.remove(self)
 
   @classmethod
   def display_credentials(cls,user):
+    '''
+    Method to display all credentials under a user's account
+    '''
     return user.credentials_list
 
 

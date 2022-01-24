@@ -25,7 +25,9 @@ def save_user(user):
 
 
 def user_login(username, password):
-
+    '''
+    Function to log a user into the system
+    '''
     return User.user_login(username, password)
     # if(active_user):
     #     print(f"Welcome {active_user.first_name}")
